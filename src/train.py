@@ -14,23 +14,23 @@ SAVER_STEP = 100
 # Hyper-parameters of the network
 BATCH_SIZE = 10
 
-x = tf.placeholder(tf.float32, [None, 661794,1,1])
+x = tf.placeholder(tf.float32, [None, 600000,1,1])
 y_ = tf.placeholder(tf.float32, [None, 10])
 
 # We are going to do a series of convolution+MaxPooling to reduce the size of the sound wave
 
-h1 = cf.cnm2x1Layer(x, [7,1,1,3]) # size=330897x3
-h2 = cf.cnm2x1Layer(h1, [7,1,3,3]) # size=165448x3
+h1 = cf.cnm2x1Layer(x, [7,1,1,3]) # size=300000x3
+h2 = cf.cnm2x1Layer(h1, [7,1,3,3]) # size=150000x3
 
-h3 = cf.cnm2x1Layer(h2, [5,1,3,5]) # size=82724x5
-h4 = cf.cnm2x1Layer(h3, [5,1,5,5]) # size=41362x5
-h5 = cf.cnm2x1Layer(h4, [3,1,5,5]) # size=20681x5
-h6 = cf.cnm2x1Layer(h5, [3,1,5,5]) # size=10340x5
-h7 = cf.cnm2x1Layer(h6, [8,1,5,5]) # size=5170x5
+h3 = cf.cnm2x1Layer(h2, [5,1,3,5]) # size=75000x5
+h4 = cf.cnm2x1Layer(h3, [5,1,5,5]) # size=37500x5
+h5 = cf.cnm2x1Layer(h4, [3,1,5,5]) # size=18750x5
+h6 = cf.cnm2x1Layer(h5, [3,1,5,5]) # size=9375x5
+#h7 = cf.cnm2x1Layer(h6, [3,1,5,5]) # size=5156x5
 
-hf = tf.reshape(h7, [-1, 5170*5])
+hf = tf.reshape(h6, [-1, 9375*5])
 
-fc1 = cf.fc_nn(hf,[5170*5,100])
+fc1 = cf.fc_nn(hf,[9375*5,100])
 fc2 = cf.fc_nn(fc1,[100,10])
 
 

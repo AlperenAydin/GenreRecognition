@@ -13,11 +13,11 @@ genres.sort() # I am sorting to make sure that the order stays the same regardle
 def load_batch(list_fn):
     data_point, fs, enc = au.auread(list_fn[0])
 
-    data = np.zeros((len(list_fn),data_point.shape[0],1,1), np.float32)
+    data = np.zeros((len(list_fn),600000,1,1), np.float32)
 
     for i in range(list_fn.shape[0]):
         data_point, fs, enc = au.auread(list_fn[i])
-        data[i,:,0,0] = data_point
+        data[i,:,0,0] = data_point[0:600000]
 
     return data
 
