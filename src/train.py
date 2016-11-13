@@ -37,21 +37,64 @@ fc2 = cf.fc_nn(fc1,[100,10])
 
 y = tf.nn.softmax(fc2)
 
+# Our loss/energy function is the cross-entropy between the label and the output
+# We chose this as it offers better results.
 loss = tf.reduce_mean(-tf.reduce_sum(y_ * tf.log(y), reduction_indices=[1]))
 
 # We are using the Adam Optimiser (because it is very good at managing the learning rate and momentum. Plus it is very easy to use and I am very llazy)
 train_step = tf.train.AdamOptimizer(1e-3).minimize(loss)
 
+# Accuracy is a more accurate (lol) indicator of the performance of our net
 correct_prediction = tf.equal(tf.argmax(y,1), tf.argmax(y_,1))
 accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 
 sess = tf.Session()
 sess.run(tf.initialize_all_variables())
 
+log = open('logs/log.txt','a')
+
+saver      = tf.train.Saver()
+checkpoint = 0
+
 with sess.as_default():
     for s in range(1+int(2e6)):
         waves, labels, bs = dataset.next_batch_train(BATCH_SIZE)
         print 'step {}'.format(s)
 
+        # We update the log with the newest performance results
+        if (s%LOG_STEP==0):
+            # We calculate the performance results
+            # for the training set on the current batch
+            tr_y = y.eval(feed_dict={x:waves})
+            train_loss = loss.eval(feed_dict={y:tr_y, y_:labels})
+            train_acc = accuracy.eval(feed_dict={y:tr_y, y_:labels})
 
+            # For the validation set, we do it on the whole thing
+            # The final results are means of the results for each batch
+            valid_loss = 0
+            valid_acc = 0
+            batch_count = 0
+            while True:
+                va_x, va_y_, bs = dataset.next_batch_valid(BATCH_SIZE)
+                if bs == -1:
+                    break
+                batch_count +=1
+                
+                va_y = y.eval(feed_dict={x:va_x})
+                valid_loss += loss.eval(feed_dict={y:va_y, y_:va_y_})
+                valid_acc += accuracy.eval(feed_dict={y:va_y, y_:va_y_})
+                
+            valid_loss = valid_loss/batch_count
+            valid_acc = valid_acc/batch_count
+
+            logline = 'Epoch {} Batch {} train_loss {} train_acc {} valid_loss {} valid_acc {} \n'
+            logline = logline.format(dataset.completed_epochs, s, train_loss, train_acc, valid_loss, valid_acc)
+            log.write(logline)
+            print logline
+
+        if s%SAVER_STEP==0:
+            path = saver.save(sess, 'checkpoints/cnn_',global_step=checkpoint)
+            print "Saved checkpoint to %s" % path
+            checkpoint += 1
+            
         train_step.run(feed_dict={x:waves, y_:labels})
