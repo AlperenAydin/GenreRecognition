@@ -7,7 +7,7 @@ dataset = audio_dataset()
 wave,l,bs = dataset.next_batch_valid(10)
 print wave.shape
 
-#Parametres of the loop
+#Parameters of the loop
 LOG_STEP = 200
 SAVER_STEP = 100
 
@@ -38,13 +38,13 @@ fc2 = cf.fc_nn(fc1,[100,10])
 y = tf.nn.softmax(fc2)
 
 # Our loss/energy function is the cross-entropy between the label and the output
-# We chose this as it offers better results.
+# We chose this as it offers better results for classification
 loss = tf.reduce_mean(-tf.reduce_sum(y_ * tf.log(y), reduction_indices=[1]))
 
-# We are using the Adam Optimiser (because it is very good at managing the learning rate and momentum. Plus it is very easy to use and I am very llazy)
+# We are using the Adam Optimiser because it is effective at managing the learning rate and momentum
 train_step = tf.train.AdamOptimizer(1e-3).minimize(loss)
 
-# Accuracy is a more accurate (lol) indicator of the performance of our net
+# Classification accuracy is a better indicator of performance
 correct_prediction = tf.equal(tf.argmax(y,1), tf.argmax(y_,1))
 accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 
