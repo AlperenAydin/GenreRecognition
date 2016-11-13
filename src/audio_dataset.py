@@ -3,6 +3,9 @@ import numpy as np
 
 import os
 
+# IMPORTANT NOTE: This code is designed to work on my 4GB laptop
+# When I figure out how to run TF on IBM's BLUEMIX I will have code that loads everything into memory
+
 # This is where our data is (I might change this to a more global variable in the 
 data_location = '../data/genres'
 genres= os.listdir(data_location)
@@ -23,13 +26,16 @@ def load_batch(list_fn):
 
 class audio_dataset:
     def __init__(self):
-        # We cut the data into two
+        # We cut the data into two parts
+        # Since we do not have enough information we will do 80% train and 20%
         train_data = []
         train_label = []
 
         valid_data = []
         valid_label = []
-        # Since we don't have the space, we are only storing the 
+        # Since we don't have the space, we are only loading the filenames in memory
+        # We will use load_batch() above to load the audio files when we need them.
+        
         for g in genres:
             dirname = os.path.join(data_location,g)
             filenames = os.listdir(dirname)
@@ -49,7 +55,8 @@ class audio_dataset:
 
         train_label = np.array(train_label)
         valid_label = np.array(valid_label)
-    
+
+        # Setting a bunch of variables 
         self.no_train = train_data.shape[0]
         self.no_valid = valid_data.shape[0]
         self.no_classes = valid_label.shape[1]
