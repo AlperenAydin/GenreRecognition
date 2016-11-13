@@ -29,7 +29,7 @@ def conv2d_bias(x, shape):
   
   return (conv2d(x,W_conv) + b_conv)
 
-# I am lazy so I put everything I need for a convolutional in a single function
+# Everything needed for a convolutional in a single function
 def cnm2x1Layer(x, shape):
   h_conv = tf.nn.relu(conv2d_bias(x, shape))
   h_pool = max_pool_2x1(h_conv)
