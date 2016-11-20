@@ -12,4 +12,6 @@ Right now, our network is a simple convolutional neural network. It takes in the
 # Recurrent Network:
 ====================
 
-The above example isn't very good for this type of job. The best would be a recurrent network and I am going to make one in coming weeks. However, I am a bit too intimidated by them (especially in TF) so I am going to spend sometime researching them before I jump in. 
+The above example isn't very good for this type of job. The best would be a recurrent network. This type of network is implemented in the rnn_train.py script.
+
+It takes in the same vector as the CNN but this network has only a single lstm cell followed by fully connected layer that maps the output of the lstm to out 1*10 output. 
