@@ -1,41 +1,44 @@
 import tensorflow as tf
 import cnn_functions as cf
+
 from audio_dataset import audio_dataset
 
+# This code is written after having used this tutorial:
+# http://monik.in/a-noobs-guide-to-implementing-rnn-lstm-using-tensorflow/
+# There are similarities in the code.
 
 dataset = audio_dataset()
-wave,l,bs = dataset.next_batch_valid(10)
-print wave.shape
 
-#Parameters of the loop
+
+#Paramaters of the training loop
 LOG_STEP = 200
-SAVER_STEP = 100
+SQVER_STEP = 100
+
 
 # Hyper-parameters of the network
 BATCH_SIZE = 10
 
-x = tf.placeholder(tf.float32, [None, 524288,1,1])
+#Defining the the network
+
+x = tf.placeholder(tf.float32, [None, 524288,1])
 y_ = tf.placeholder(tf.float32, [None, 10])
 
-# We are going to do a series of convolution+MaxPooling to reduce the size of the sound wave
+# Defining the LSTM cell
+num_hidden = 24
+cell = tf.nn.rnn_cell.LSTMCell(num_hidden,state_is_tuple=True)
 
-h1 = cf.cnm2x1Layer(x, [7,1,1,3]) # size=262144x3
-h2 = cf.cnm2x1Layer(h1, [7,1,3,3]) # size=131072x3
+val, state = tf.nn.dynamic_rnn(cell, x, dtype=tf.float32)
 
-h3 = cf.cnm2x1Layer(h2, [5,1,3,5]) # size=65536x5
-h4 = cf.cnm2x1Layer(h3, [5,1,5,5]) # size=32768x5
-h5 = cf.cnm2x1Layer(h4, [3,1,5,5]) # size=16384x5
-h6 = cf.cnm2x1Layer(h5, [3,1,5,5]) # size=81925x5
-h7 = cf.cnm2x1Layer(h6, [3,1,5,5]) # size=4096x5
-h8 = cf.cnm2x1Layer(h7, [3,1,5,1]) # size=2048x1
+# Where are interested in the result we get in the end
+# This might be improved
+val = tf.transpose(val, [1, 0, 2])
+last = tf.gather(val, int(val.get_shape()[0]) - 1)
 
-hf = tf.reshape(h8, [-1, 2048])
-
-fc1 = cf.fc_nn(hf,[2048,100])
-fc2 = cf.fc_nn(fc1,[100,10])
+# We want to map the 24 member output to 10-long vector
+fc1 = cf.fc_nn(last, [num_hidden,10])
 
 # We pass the output through softmax so it represents probabilities
-y = tf.nn.softmax(fc2)
+y = tf.nn.softmax(fc1)
 
 # Our loss/energy function is the cross-entropy between the label and the output
 # We chose this as it offers better results for classification
@@ -51,7 +54,8 @@ accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 sess = tf.Session()
 sess.run(tf.initialize_all_variables())
 
-log = open('cnn/logs/log.txt','a')
+
+log = open('rnn/logs/log.txt','a')
 
 saver      = tf.train.Saver()
 checkpoint = 0
@@ -59,6 +63,7 @@ checkpoint = 0
 with sess.as_default():
     for s in range(1+int(2e6)):
         waves, labels, bs = dataset.next_batch_train(BATCH_SIZE)
+        waves = waves[:,:,:,0]
         print 'step {}'.format(s)
 
         # We update the log with the newest performance results
@@ -76,6 +81,7 @@ with sess.as_default():
             batch_count = 0
             while True:
                 va_x, va_y_, bs = dataset.next_batch_valid(BATCH_SIZE)
+                va_x = va_x[:,:,:,0]
                 if bs == -1:
                     break
                 batch_count +=1
@@ -93,7 +99,7 @@ with sess.as_default():
             print logline
 
         if s%SAVER_STEP==0:
-            path = saver.save(sess, 'cnn/checkpoints/cnn_',global_step=checkpoint)
+            path = saver.save(sess, 'rnn/checkpoints/rnn_',global_step=checkpoint)
             print "Saved checkpoint to %s" % path
             checkpoint += 1
             
