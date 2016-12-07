@@ -1,3 +1,0 @@
-Epoch 0 Batch 0 train_loss 2.28193044662 train_acc 0.20000000298 valid_loss 2.32070831876 valid_acc 0.105263157895 
-Epoch 2 Batch 200 train_loss 2.3221783638 train_acc 0.10000000149 valid_loss 2.30431405306 valid_acc 0.1 
-Epoch 5 Batch 400 train_loss 2.29489660263 train_acc 0.5 valid_loss 2.30272126198 valid_acc 0.1 

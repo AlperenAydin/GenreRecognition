@@ -4,8 +4,6 @@ from audio_dataset import audio_dataset
 
 
 dataset = audio_dataset()
-wave,l,bs = dataset.next_batch_valid(10)
-print wave.shape
 
 #Parameters of the loop
 LOG_STEP = 200

@@ -12,11 +12,11 @@ dataset = audio_dataset()
 
 #Paramaters of the training loop
 LOG_STEP = 200
-SQVER_STEP = 100
+SAVER_STEP = 100
 
 
 # Hyper-parameters of the network
-BATCH_SIZE = 10
+BATCH_SIZE = 1
 
 #Defining the the network
 
@@ -24,7 +24,7 @@ x = tf.placeholder(tf.float32, [None, 524288,1])
 y_ = tf.placeholder(tf.float32, [None, 10])
 
 # Defining the LSTM cell
-num_hidden = 24
+num_hidden = 15
 cell = tf.nn.rnn_cell.LSTMCell(num_hidden,state_is_tuple=True)
 
 val, state = tf.nn.dynamic_rnn(cell, x, dtype=tf.float32)
@@ -61,7 +61,7 @@ saver      = tf.train.Saver()
 checkpoint = 0
 
 with sess.as_default():
-    for s in range(1+int(2e6)):
+    for s in range(1,int(2e6)):
         waves, labels, bs = dataset.next_batch_train(BATCH_SIZE)
         waves = waves[:,:,:,0]
         print 'step {}'.format(s)
