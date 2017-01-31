@@ -5,8 +5,8 @@ import os
 import math
 
 # IMPORTANT NOTE: This code is designed to work on my 4GB laptop
-# When I figure out how to run TF on IBM's BLUEMIX I will have code that
-# loads everything into memory
+# When we get to have AWS instances with bigger RAM,
+# I will design a version which loads everything into memory
 
 # This is where our data is (I might change this to a more global variable
 # in the
@@ -41,14 +41,14 @@ class audio_dataset:
                 file, _, _ = au.auread(filenames[l])
                 if(self.max_length < file.shape[0]):
                     self.max_length = file.shape[0]
+                data = filenames[l]
+                label = np.array([np.float32(g == genre) for genre in genres])
                 if l < 0.8 * len(filenames):
-                    train_data.append(filenames[l])
-                    train_label.append([np.float32(g == genre)
-                                        for genre in genres])
+                    train_data.append(data)
+                    train_label.append(label)
                 else:
-                    valid_data.append(filenames[l])
-                    valid_label.append([np.float32(g == genre)
-                                        for genre in genres])
+                    valid_data.append(data)
+                    valid_label.append(label)
         self.max_length = 2**(int(math.log(self.max_length, 2)))
         train_data = np.array(train_data)
         valid_data = np.array(valid_data)
@@ -81,9 +81,9 @@ class audio_dataset:
     # But I still want to return them as np arrays so I will filter the output
     # through this function
     def load_batch(self, filename):
-        data = np.zeros((1, self.max_length, 1, 1), np.float32)
+        data = np.zeros((1, self.max_length, 1), np.float32)
         data_point, fs, enc = au.auread(filename)
-        data[0, 0:self.max_length, 0, 0] = data_point[0:self.max_length]
+        data[0, 0:self.max_length, 0] = data_point[0:self.max_length]
         return data
 
     # Returns the next batch of the TRAINING SET
@@ -101,7 +101,7 @@ class audio_dataset:
 
         cur_perm = self.perm[start]
         return (self.load_batch(self.train_data[cur_perm]),
-                self.train_label[cur_perm],
+                np.reshape(self.train_label[cur_perm], (1, 10)),
                 1)
 
     def reset_batch_valid(self):
@@ -116,5 +116,5 @@ class audio_dataset:
             self.reset_batch_valid()
             return -1, -1, -1
         return (self.load_batch(self.valid_data[start]),
-                self.valid_label[start],
+                np.reshape(self.valid_label[start], (1, 10)),
                 1)

@@ -23,9 +23,9 @@ def conv2d(x, W):
 # This pooling layer halves the size
 
 
-def max_pool_2x1(x):
-    return tf.nn.max_pool(x, ksize=[1, 2, 1, 1],
-                          strides=[1, 2, 1, 1], padding='SAME')
+def max_pool_2x2(x):
+    return tf.nn.max_pool(x, ksize=[1, 2, 2, 1],
+                          strides=[1, 2, 2, 1], padding='SAME')
 
 # A 2d connvolutional layer with bias
 
@@ -39,9 +39,9 @@ def conv2d_bias(x, shape):
 # Everything needed for a convolutional in a single function
 
 
-def cnm2x1Layer(x, shape):
+def cnm2x2Layer(x, shape):
     h_conv = tf.nn.relu(conv2d_bias(x, shape))
-    h_pool = max_pool_2x1(h_conv)
+    h_pool = max_pool_2x2(h_conv)
     return h_pool
 
 # A fully connected neural network

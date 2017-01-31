@@ -12,33 +12,43 @@ dataset = audio_dataset()
 LOG_STEP = 10
 SAVER_STEP = 100
 
-# Hyper-parameters of the network
-BATCH_SIZE = 1
 
+# Hyper parametres of the network
+
+num_segments = 64
+length = dataset.max_length / num_segments
 # The inputs
-x = tf.placeholder(tf.float32, [1, 600000, 1, 1])
-y_ = tf.placeholder(tf.float32, [None, 10])
+x = tf.placeholder(tf.float32, [1, dataset.max_length, 1])
+y_ = tf.placeholder(tf.float32, [1, 10])
 
-X = tf.reshape(x, [10, 60000, 1, 1])
+X = tf.reshape(x, [num_segments, length, 1])
+
+# Defining the first LSTM cell
+num_hidden = 16
+with tf.variable_scope('first_LSTM'):
+    cell_1 = tf.nn.rnn_cell.LSTMCell(num_hidden, state_is_tuple=True)
+
+    out, state_1 = tf.nn.dynamic_rnn(cell_1, X, dtype=tf.float32)
+
+    out = tf.reshape(out, [1, num_segments, length, 16])  # 1x64xlengthx16
+
 # We are going to do a series of convolution+MaxPooling to reduce the size
 # of the sound wave
 
-h1 = cf.cnm2x1Layer(X, [7, 1, 1, 3])   # size=30000x3
-h2 = cf.cnm2x1Layer(h1, [7, 1, 3, 3])  # size=15000x3
+h1 = cf.cnm2x2Layer(out, [11, 3, 16, 8])  # 1x32x(length/2)x8
+h2 = cf.cnm2x2Layer(h1,  [5, 3, 8, 8])    # 1x16x(length/4)x8
+h3 = cf.cnm2x2Layer(h2,  [3, 3, 8, 4])    # 1x8x(length/8)x4
+h4 = cf.cnm2x2Layer(h3,  [3, 3, 4, 1])    # 1x4x(length/16)x1
 
-h3 = cf.cnm2x1Layer(h2, [5, 1, 3, 5])  # size=7500x5
-h4 = cf.cnm2x1Layer(h3, [5, 1, 5, 5])  # size=3750x5
-h5 = cf.cnm2x1Layer(h4, [3, 1, 5, 1])  # size=1875x1
+# Entering the second LSTM cell
 
-t = tf.reshape(h5, [-1, 1875, 1])
+H = tf.reshape(h4, [1, length * num_segments / (2**(4 * 2)), 1])
 
-# Defining the LSTM cell
-num_hidden = 15
-cell = tf.nn.rnn_cell.LSTMCell(num_hidden, state_is_tuple=True)
+num_hidden = 8
 
-val, state = tf.nn.dynamic_rnn(cell, t, dtype=tf.float32)
-
-val = tf.reshape(val, [1, 18750, 15])
+with tf.variable_scope('second_LSTM'):
+    cell_2 = tf.nn.rnn_cell.LSTMCell(num_hidden, state_is_tuple=True)
+    val, state_2 = tf.nn.dynamic_rnn(cell_2, H, dtype=tf.float32)
 
 # Where are interested in the result we get in the end
 # This might be improved
@@ -51,7 +61,9 @@ fc1 = cf.fc_nn(last, [num_hidden, 10])
 # We pass the output through softmax so it represents probabilities
 y = tf.nn.softmax(fc1)
 
-# Our loss/energy function is the cross-entropy between the label and the output
+# Our loss/energy function is the cross-entropy
+# between the label and the output
+
 # We chose this as it offers better results for classification
 loss = tf.reduce_mean(-tf.reduce_sum(y_ * tf.log(y), reduction_indices=[1]))
 
@@ -74,7 +86,7 @@ checkpoint = 0
 
 with sess.as_default():
     for s in range(1, int(2e6)):
-        waves, labels, bs = dataset.next_batch_train(BATCH_SIZE)
+        waves, labels, bs = dataset.next_batch_train()
         print 'step {}'.format(s)
 
         # We update the log with the newest performance results
@@ -91,7 +103,7 @@ with sess.as_default():
             valid_acc = 0
             batch_count = 0.0
             while True:
-                va_x, va_y_, bs = dataset.next_batch_valid(BATCH_SIZE)
+                va_x, va_y_, bs = dataset.next_batch_valid()
                 if bs == -1:
                     break
                 batch_count += 1.0
