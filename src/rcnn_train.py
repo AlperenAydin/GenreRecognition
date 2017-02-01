@@ -80,8 +80,6 @@ sess = tf.Session()
 sess.run(tf.initialize_all_variables())
 
 
-log = open('logs/rcnn_log.txt', 'a')
-
 saver = tf.train.Saver()
 checkpoint = 0
 
@@ -119,7 +117,9 @@ with sess.as_default():
             logline = 'Epoch {} Batch {} train_loss {} train_acc {} valid_loss {} valid_acc {} \n'
             logline = logline.format(
                 dataset.completed_epochs, s, train_loss, train_acc, valid_loss, valid_acc)
+            log = open('logs/rcnn_log.txt', 'a')
             log.write(logline)
+            log.close()
             print logline
 
         if s % SAVER_STEP == 0:
