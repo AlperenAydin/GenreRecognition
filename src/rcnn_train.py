@@ -10,7 +10,7 @@ dataset = audio_dataset()
 
 # Parameters of the loop
 LOG_STEP = 10
-SAVER_STEP = 100
+SAVER_STEP = 50
 
 
 # Hyper parametres of the network
