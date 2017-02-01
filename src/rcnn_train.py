@@ -30,7 +30,8 @@ with tf.variable_scope('first_LSTM'):
 
     out, state_1 = tf.nn.dynamic_rnn(cell_1, X, dtype=tf.float32)
 
-    out = tf.reshape(out, [1, num_segments, length, 16])  # 1x64xlengthx16
+    out = tf.reshape(out, [1, num_segments, length,
+                           num_hidden])  # 1x64xlengthx16
 
 # We are going to do a series of convolution+MaxPooling to reduce the size
 # of the sound wave
