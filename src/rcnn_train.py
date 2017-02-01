@@ -84,7 +84,7 @@ saver = tf.train.Saver()
 checkpoint = 0
 
 with sess.as_default():
-    for s in range(int(2e4)):
+    for s in range(int(2e5)):
         waves, labels, bs = dataset.next_batch_train()
         print 'step {}'.format(s)
 
