@@ -24,7 +24,7 @@ y_ = tf.placeholder(tf.float32, [1, 10])
 X = tf.reshape(x, [num_segments, length, 1])
 
 # Defining the first LSTM cell
-num_hidden = 8
+num_hidden = 16
 with tf.variable_scope('first_LSTM'):
     cell_1 = tf.nn.rnn_cell.LSTMCell(num_hidden, state_is_tuple=True)
 
@@ -36,8 +36,8 @@ with tf.variable_scope('first_LSTM'):
 # We are going to do a series of convolution+MaxPooling to reduce the size
 # of the sound wave
 
-h1 = cf.cnm2x2Layer(out, [11, 3, num_hidden, 4])  # 1x32x(length/2)x8
-h2 = cf.cnm2x2Layer(h1,  [5, 3, 4, 4])    # 1x16x(length/4)x8
+h1 = cf.cnm2x2Layer(out, [11, 3, num_hidden, 8])  # 1x32x(length/2)x8
+h2 = cf.cnm2x2Layer(h1,  [5, 3, 8, 4])    # 1x16x(length/4)x8
 h3 = cf.cnm2x2Layer(h2,  [3, 3, 4, 2])    # 1x8x(length/8)x4
 h4 = cf.cnm2x2Layer(h3,  [3, 3, 2, 1])    # 1x4x(length/16)x1
 
