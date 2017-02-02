@@ -1,0 +1,779 @@
+I tensorflow/stream_executor/dso_loader.cc:111] successfully opened CUDA library libcublas.so.8.0 locally
+I tensorflow/stream_executor/dso_loader.cc:111] successfully opened CUDA library libcudnn.so.5.1.5 locally
+I tensorflow/stream_executor/dso_loader.cc:111] successfully opened CUDA library libcufft.so.8.0 locally
+I tensorflow/stream_executor/dso_loader.cc:111] successfully opened CUDA library libcuda.so.1 locally
+I tensorflow/stream_executor/dso_loader.cc:111] successfully opened CUDA library libcurand.so.8.0 locally
+NVIDIA: no NVIDIA devices found
+E tensorflow/stream_executor/cuda/cuda_driver.cc:491] failed call to cuInit: CUDA_ERROR_UNKNOWN
+I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:140] kernel driver does not appear to be running on this host (ip-172-31-21-147): /proc/driver/nvidia/version does not exist
+step 0
+Epoch 0 Batch 0 train_loss 2.29621839523 train_acc 1.0 valid_loss 2.30262204647 valid_acc 0.1 
+
+Saved checkpoint to checkpoints/rcnn_-0
+step 1
+step 2
+step 3
+step 4
+step 5
+step 6
+step 7
+step 8
+step 9
+step 10
+Epoch 0 Batch 10 train_loss 2.30863046646 train_acc 0.0 valid_loss 2.30265517712 valid_acc 0.1 
+
+step 11
+step 12
+step 13
+step 14
+step 15
+step 16
+step 17
+step 18
+step 19
+step 20
+Epoch 0 Batch 20 train_loss 2.30381178856 train_acc 0.0 valid_loss 2.30273729563 valid_acc 0.1 
+
+step 21
+step 22
+step 23
+step 24
+step 25
+step 26
+step 27
+step 28
+step 29
+step 30
+Epoch 0 Batch 30 train_loss 2.2731590271 train_acc 0.0 valid_loss 2.30290399432 valid_acc 0.1 
+
+step 31
+step 32
+step 33
+step 34
+step 35
+step 36
+step 37
+step 38
+step 39
+step 40
+Epoch 0 Batch 40 train_loss 2.34501361847 train_acc 0.0 valid_loss 2.30310373783 valid_acc 0.1 
+
+step 41
+step 42
+step 43
+step 44
+step 45
+step 46
+step 47
+step 48
+step 49
+step 50
+Epoch 0 Batch 50 train_loss 2.33625912666 train_acc 0.0 valid_loss 2.30302272677 valid_acc 0.1 
+
+Saved checkpoint to checkpoints/rcnn_-1
+step 51
+step 52
+step 53
+step 54
+step 55
+step 56
+step 57
+step 58
+step 59
+step 60
+Epoch 0 Batch 60 train_loss 2.29521226883 train_acc 0.0 valid_loss 2.30295003533 valid_acc 0.1 
+
+step 61
+step 62
+step 63
+step 64
+step 65
+step 66
+step 67
+step 68
+step 69
+step 70
+Epoch 0 Batch 70 train_loss 2.29293489456 train_acc 0.0 valid_loss 2.30291638017 valid_acc 0.1 
+
+step 71
+step 72
+step 73
+step 74
+step 75
+step 76
+step 77
+step 78
+step 79
+step 80
+Epoch 0 Batch 80 train_loss 2.28873562813 train_acc 0.0 valid_loss 2.30287437201 valid_acc 0.1 
+
+step 81
+step 82
+step 83
+step 84
+step 85
+step 86
+step 87
+step 88
+step 89
+step 90
+Epoch 0 Batch 90 train_loss 2.2737019062 train_acc 1.0 valid_loss 2.30282424569 valid_acc 0.1 
+
+step 91
+step 92
+step 93
+step 94
+step 95
+step 96
+step 97
+step 98
+step 99
+step 100
+Epoch 0 Batch 100 train_loss 2.31218385696 train_acc 0.0 valid_loss 2.30279146552 valid_acc 0.1 
+
+Saved checkpoint to checkpoints/rcnn_-2
+step 101
+step 102
+step 103
+step 104
+step 105
+step 106
+step 107
+step 108
+step 109
+step 110
+Epoch 0 Batch 110 train_loss 2.27194857597 train_acc 1.0 valid_loss 2.3027684319 valid_acc 0.1 
+
+step 111
+step 112
+step 113
+step 114
+step 115
+step 116
+step 117
+step 118
+step 119
+step 120
+Epoch 0 Batch 120 train_loss 2.33199739456 train_acc 0.0 valid_loss 2.30278167486 valid_acc 0.1 
+
+step 121
+step 122
+step 123
+step 124
+step 125
+step 126
+step 127
+step 128
+step 129
+step 130
+Epoch 0 Batch 130 train_loss 2.30150270462 train_acc 0.0 valid_loss 2.30276818514 valid_acc 0.1 
+
+step 131
+step 132
+step 133
+step 134
+step 135
+step 136
+step 137
+step 138
+step 139
+step 140
+Epoch 0 Batch 140 train_loss 2.30309653282 train_acc 0.0 valid_loss 2.30278450251 valid_acc 0.1 
+
+step 141
+step 142
+step 143
+step 144
+step 145
+step 146
+step 147
+step 148
+step 149
+step 150
+Epoch 0 Batch 150 train_loss 2.29902219772 train_acc 0.0 valid_loss 2.3027973175 valid_acc 0.1 
+
+Saved checkpoint to checkpoints/rcnn_-3
+step 151
+step 152
+step 153
+step 154
+step 155
+step 156
+step 157
+step 158
+step 159
+step 160
+Epoch 0 Batch 160 train_loss 2.29879117012 train_acc 0.0 valid_loss 2.30280476809 valid_acc 0.1 
+
+step 161
+step 162
+step 163
+step 164
+step 165
+step 166
+step 167
+step 168
+step 169
+step 170
+Epoch 0 Batch 170 train_loss 2.29441833496 train_acc 0.0 valid_loss 2.3028123641 valid_acc 0.1 
+
+step 171
+step 172
+step 173
+step 174
+step 175
+step 176
+step 177
+step 178
+step 179
+step 180
+Epoch 0 Batch 180 train_loss 2.29925966263 train_acc 0.0 valid_loss 2.3028781569 valid_acc 0.1 
+
+step 181
+step 182
+step 183
+step 184
+step 185
+step 186
+step 187
+step 188
+step 189
+step 190
+Epoch 0 Batch 190 train_loss 2.29164195061 train_acc 0.0 valid_loss 2.30296317816 valid_acc 0.1 
+
+step 191
+step 192
+step 193
+step 194
+step 195
+step 196
+step 197
+step 198
+step 199
+step 200
+Epoch 0 Batch 200 train_loss 2.30158042908 train_acc 0.0 valid_loss 2.30302584887 valid_acc 0.1 
+
+Saved checkpoint to checkpoints/rcnn_-4
+step 201
+step 202
+step 203
+step 204
+step 205
+step 206
+step 207
+step 208
+step 209
+step 210
+Epoch 0 Batch 210 train_loss 2.25169444084 train_acc 1.0 valid_loss 2.30303815126 valid_acc 0.1 
+
+step 211
+step 212
+step 213
+step 214
+step 215
+step 216
+step 217
+step 218
+step 219
+step 220
+Epoch 0 Batch 220 train_loss 2.27698135376 train_acc 0.0 valid_loss 2.30313882947 valid_acc 0.1 
+
+step 221
+step 222
+step 223
+step 224
+step 225
+step 226
+step 227
+step 228
+step 229
+step 230
+Epoch 0 Batch 230 train_loss 2.28533291817 train_acc 0.0 valid_loss 2.30309266686 valid_acc 0.1 
+
+step 231
+step 232
+step 233
+step 234
+step 235
+step 236
+step 237
+step 238
+step 239
+step 240
+Epoch 0 Batch 240 train_loss 2.29934191704 train_acc 0.0 valid_loss 2.30300211668 valid_acc 0.1 
+
+step 241
+step 242
+step 243
+step 244
+step 245
+step 246
+step 247
+step 248
+step 249
+step 250
+Epoch 0 Batch 250 train_loss 2.30431747437 train_acc 0.0 valid_loss 2.30301130176 valid_acc 0.1 
+
+Saved checkpoint to checkpoints/rcnn_-5
+step 251
+step 252
+step 253
+step 254
+step 255
+step 256
+step 257
+step 258
+step 259
+step 260
+Epoch 0 Batch 260 train_loss 2.27148246765 train_acc 0.0 valid_loss 2.30297526717 valid_acc 0.1 
+
+step 261
+step 262
+step 263
+step 264
+step 265
+step 266
+step 267
+step 268
+step 269
+step 270
+Epoch 0 Batch 270 train_loss 2.28913402557 train_acc 0.0 valid_loss 2.30300913692 valid_acc 0.1 
+
+step 271
+step 272
+step 273
+step 274
+step 275
+step 276
+step 277
+step 278
+step 279
+step 280
+Epoch 0 Batch 280 train_loss 2.34346604347 train_acc 0.0 valid_loss 2.30301299214 valid_acc 0.1 
+
+step 281
+step 282
+step 283
+step 284
+step 285
+step 286
+step 287
+step 288
+step 289
+step 290
+Epoch 0 Batch 290 train_loss 2.29864597321 train_acc 0.0 valid_loss 2.30294734359 valid_acc 0.1 
+
+step 291
+step 292
+step 293
+step 294
+step 295
+step 296
+step 297
+step 298
+step 299
+step 300
+Epoch 0 Batch 300 train_loss 2.27487468719 train_acc 0.0 valid_loss 2.30289605737 valid_acc 0.1 
+
+Saved checkpoint to checkpoints/rcnn_-6
+step 301
+step 302
+step 303
+step 304
+step 305
+step 306
+step 307
+step 308
+step 309
+step 310
+Epoch 0 Batch 310 train_loss 2.27534151077 train_acc 0.0 valid_loss 2.30286057472 valid_acc 0.1 
+
+step 311
+step 312
+step 313
+step 314
+step 315
+step 316
+step 317
+step 318
+step 319
+step 320
+Epoch 0 Batch 320 train_loss 2.27651286125 train_acc 0.0 valid_loss 2.30283220291 valid_acc 0.1 
+
+step 321
+step 322
+step 323
+step 324
+step 325
+step 326
+step 327
+step 328
+step 329
+step 330
+Epoch 0 Batch 330 train_loss 2.30731129646 train_acc 0.0 valid_loss 2.30284201503 valid_acc 0.1 
+
+step 331
+step 332
+step 333
+step 334
+step 335
+step 336
+step 337
+step 338
+step 339
+step 340
+Epoch 0 Batch 340 train_loss 2.30451178551 train_acc 0.0 valid_loss 2.30289184809 valid_acc 0.1 
+
+step 341
+step 342
+step 343
+step 344
+step 345
+step 346
+step 347
+step 348
+step 349
+step 350
+Epoch 0 Batch 350 train_loss 2.34476566315 train_acc 0.0 valid_loss 2.30291909456 valid_acc 0.1 
+
+Saved checkpoint to checkpoints/rcnn_-7
+step 351
+step 352
+step 353
+step 354
+step 355
+step 356
+step 357
+step 358
+step 359
+step 360
+Epoch 0 Batch 360 train_loss 2.29845714569 train_acc 0.0 valid_loss 2.30292786479 valid_acc 0.1 
+
+step 361
+step 362
+step 363
+step 364
+step 365
+step 366
+step 367
+step 368
+step 369
+step 370
+Epoch 0 Batch 370 train_loss 2.30508565903 train_acc 0.0 valid_loss 2.30293823481 valid_acc 0.1 
+
+step 371
+step 372
+step 373
+step 374
+step 375
+step 376
+step 377
+step 378
+step 379
+step 380
+Epoch 0 Batch 380 train_loss 2.29780364037 train_acc 0.0 valid_loss 2.30289989948 valid_acc 0.1 
+
+step 381
+step 382
+step 383
+step 384
+step 385
+step 386
+step 387
+step 388
+step 389
+step 390
+Epoch 0 Batch 390 train_loss 2.34712648392 train_acc 0.0 valid_loss 2.30284205914 valid_acc 0.1 
+
+step 391
+step 392
+step 393
+step 394
+step 395
+step 396
+step 397
+step 398
+step 399
+step 400
+Epoch 0 Batch 400 train_loss 2.30002856255 train_acc 0.0 valid_loss 2.30278144598 valid_acc 0.1 
+
+Saved checkpoint to checkpoints/rcnn_-8
+step 401
+step 402
+step 403
+step 404
+step 405
+step 406
+step 407
+step 408
+step 409
+step 410
+Epoch 0 Batch 410 train_loss 2.29597234726 train_acc 0.0 valid_loss 2.30272307158 valid_acc 0.1 
+
+step 411
+step 412
+step 413
+step 414
+step 415
+step 416
+step 417
+step 418
+step 419
+step 420
+Epoch 0 Batch 420 train_loss 2.30373668671 train_acc 0.0 valid_loss 2.30270301104 valid_acc 0.1 
+
+step 421
+step 422
+step 423
+step 424
+step 425
+step 426
+step 427
+step 428
+step 429
+step 430
+Epoch 0 Batch 430 train_loss 2.33120918274 train_acc 0.0 valid_loss 2.30270632267 valid_acc 0.1 
+
+step 431
+step 432
+step 433
+step 434
+step 435
+step 436
+step 437
+step 438
+step 439
+step 440
+Epoch 0 Batch 440 train_loss 2.28086948395 train_acc 1.0 valid_loss 2.3026978457 valid_acc 0.1 
+
+step 441
+step 442
+step 443
+step 444
+step 445
+step 446
+step 447
+step 448
+step 449
+step 450
+Epoch 0 Batch 450 train_loss 2.30874300003 train_acc 0.0 valid_loss 2.302697649 valid_acc 0.1 
+
+Saved checkpoint to checkpoints/rcnn_-9
+step 451
+step 452
+step 453
+step 454
+step 455
+step 456
+step 457
+step 458
+step 459
+step 460
+Epoch 0 Batch 460 train_loss 2.30318641663 train_acc 0.0 valid_loss 2.30267606378 valid_acc 0.1 
+
+step 461
+step 462
+step 463
+step 464
+step 465
+step 466
+step 467
+step 468
+step 469
+step 470
+Epoch 0 Batch 470 train_loss 2.30595111847 train_acc 0.0 valid_loss 2.302663275 valid_acc 0.1 
+
+step 471
+step 472
+step 473
+step 474
+step 475
+step 476
+step 477
+step 478
+step 479
+step 480
+Epoch 0 Batch 480 train_loss 2.3065199852 train_acc 0.0 valid_loss 2.30266861081 valid_acc 0.1 
+
+step 481
+step 482
+step 483
+step 484
+step 485
+step 486
+step 487
+step 488
+step 489
+step 490
+Epoch 0 Batch 490 train_loss 2.30555343628 train_acc 0.0 valid_loss 2.30266718745 valid_acc 0.1 
+
+step 491
+step 492
+step 493
+step 494
+step 495
+step 496
+step 497
+step 498
+step 499
+step 500
+Epoch 0 Batch 500 train_loss 2.32005143166 train_acc 0.0 valid_loss 2.30265103817 valid_acc 0.1 
+
+Saved checkpoint to checkpoints/rcnn_-10
+step 501
+step 502
+step 503
+step 504
+step 505
+step 506
+step 507
+step 508
+step 509
+step 510
+Epoch 0 Batch 510 train_loss 2.30448722839 train_acc 0.0 valid_loss 2.30263371348 valid_acc 0.1 
+
+step 511
+step 512
+step 513
+step 514
+step 515
+step 516
+step 517
+step 518
+step 519
+step 520
+Epoch 0 Batch 520 train_loss 2.29470300674 train_acc 0.0 valid_loss 2.30263283491 valid_acc 0.1 
+
+step 521
+step 522
+step 523
+step 524
+step 525
+step 526
+step 527
+step 528
+step 529
+step 530
+Epoch 0 Batch 530 train_loss 2.31913375854 train_acc 0.0 valid_loss 2.30264480829 valid_acc 0.1 
+
+step 531
+step 532
+step 533
+step 534
+step 535
+step 536
+step 537
+step 538
+step 539
+step 540
+Epoch 0 Batch 540 train_loss 2.28968930244 train_acc 0.0 valid_loss 2.30264545441 valid_acc 0.1 
+
+step 541
+step 542
+step 543
+step 544
+step 545
+step 546
+step 547
+step 548
+step 549
+step 550
+Epoch 0 Batch 550 train_loss 2.28318500519 train_acc 0.0 valid_loss 2.3026606226 valid_acc 0.1 
+
+Saved checkpoint to checkpoints/rcnn_-11
+step 551
+step 552
+step 553
+step 554
+step 555
+step 556
+step 557
+step 558
+step 559
+step 560
+Epoch 0 Batch 560 train_loss 2.31927466393 train_acc 0.0 valid_loss 2.30266796112 valid_acc 0.1 
+
+step 561
+step 562
+step 563
+step 564
+step 565
+step 566
+step 567
+step 568
+step 569
+step 570
+Epoch 0 Batch 570 train_loss 2.28398871422 train_acc 0.0 valid_loss 2.30266865253 valid_acc 0.1 
+
+step 571
+step 572
+step 573
+step 574
+step 575
+step 576
+step 577
+step 578
+step 579
+step 580
+Epoch 0 Batch 580 train_loss 2.31534719467 train_acc 0.0 valid_loss 2.3026637423 valid_acc 0.1 
+
+step 581
+step 582
+step 583
+step 584
+step 585
+step 586
+step 587
+step 588
+step 589
+step 590
+Epoch 0 Batch 590 train_loss 2.31034874916 train_acc 0.0 valid_loss 2.30265043497 valid_acc 0.1 
+
+step 591
+step 592
+step 593
+step 594
+step 595
+step 596
+step 597
+step 598
+step 599
+step 600
+Epoch 0 Batch 600 train_loss 2.29799246788 train_acc 0.0 valid_loss 2.30264664888 valid_acc 0.1 
+
+Saved checkpoint to checkpoints/rcnn_-12
+step 601
+step 602
+step 603
+step 604
+step 605
+step 606
+step 607
+step 608
+step 609
+step 610
+Epoch 0 Batch 610 train_loss 2.3182592392 train_acc 0.0 valid_loss 2.30265852213 valid_acc 0.1 
+
+step 611
+step 612
+step 613
+step 614
+step 615
+step 616
+step 617
+step 618
+step 619
+step 620
+Epoch 0 Batch 620 train_loss 2.29107069969 train_acc 0.0 valid_loss 2.30266092896 valid_acc 0.1 
+
+step 621
+step 622
+step 623
+step 624
+step 625
+step 626
+step 627
+step 628
+step 629
+step 630
+Epoch 0 Batch 630 train_loss 2.32115769386 train

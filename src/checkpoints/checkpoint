@@ -1,0 +1,6 @@
+model_checkpoint_path: "rcnn_-16"
+all_model_checkpoint_paths: "rcnn_-12"
+all_model_checkpoint_paths: "rcnn_-13"
+all_model_checkpoint_paths: "rcnn_-14"
+all_model_checkpoint_paths: "rcnn_-15"
+all_model_checkpoint_paths: "rcnn_-16"
